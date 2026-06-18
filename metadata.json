@@ -1,0 +1,12 @@
+{
+  "name": "ZooL",
+  "description": "The next-generation pet health platform. AI-driven wellness co-piloting, clinical assessments, and emergency response.",
+  "requestFramePermissions": [
+    "geolocation",
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

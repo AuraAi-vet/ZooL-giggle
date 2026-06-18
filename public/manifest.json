@@ -1,0 +1,37 @@
+{
+  "name": "ZooL Pet Care",
+  "short_name": "ZooL",
+  "description": "Your AI-powered veterinary companion & booking navigator.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F5F0",
+  "theme_color": "#0B192C",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/ruru-avatar.png.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/ruru-avatar.png.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["medical", "pets", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Triage Symptoms",
+      "url": "/?shortcut=symptoms",
+      "description": "Scan and triage pet symptoms instantly"
+    },
+    {
+      "name": "Find Services",
+      "url": "/?shortcut=services",
+      "description": "Locate veterinarians, groomers, and pet shops near you"
+    }
+  ]
+}
