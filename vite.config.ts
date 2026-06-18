@@ -35,15 +35,16 @@ export default defineConfig({
       }
     })
   ],
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
+ build: {
     rollupOptions: {
       output: {
-        manualChunks: { vendor: ['react', 'react-dom'] }
+        manualChunks: {
+          vendor: ['react', 'react-dom'], // Or whatever dependencies you are splitting
+        }
       }
     }
-  },
+  }
+})
   define: {
     'process.env.GOOGLE_MAPS_PLATFORM_KEY': JSON.stringify(process.env.GOOGLE_MAPS_PLATFORM_KEY || '')
   },
