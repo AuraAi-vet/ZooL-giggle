@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    --font-brand: "Fredoka", sans-serif;
+    --font-display: "Outfit", sans-serif;
+
+    /* Premium Clinical Zen Palette */
+    --color-bg-main: #F8FAFC;
+    --color-glass: rgba(255, 255, 255, 0.85);
+    --color-border: rgba(11, 20, 36, 0.08);
+    
+    --color-accent-gold: #C5A572;
+    --color-accent-indigo: #0B1424;
+    --color-accent-emerald: #059669;
+    
+    --color-text-primary: #0B1424;
+    --color-text-secondary: #475569;
+    --color-text-muted: #94A3B8;
+  }
+  
+  body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-[#0B1424] font-bold;
+  }
+}
+
+@layer components {
+  /* Bento Card Pattern - Premium Zen Edition */
+  .bento-card {
+    @apply bg-white rounded-[2.5rem] border border-slate-200/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.08)] hover:-translate-y-1 relative;
+  }
+
+  /* Refined Button System - Ultimate Platform Edition */
+  .btn-base {
+    @apply flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-bold transition-all duration-300 active:scale-95 text-sm uppercase tracking-wider;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-[#0B1424] text-white hover:bg-slate-800 shadow-xl shadow-slate-900/10;
+  }
+
+  .btn-gold {
+    @apply btn-base bg-[#C5A572] text-white hover:bg-[#B39462] shadow-xl shadow-amber-900/10;
+  }
+
+  .btn-soft {
+    @apply btn-base bg-white border border-slate-200 text-slate-700 hover:border-[#0B1424] hover:text-[#0B1424] shadow-sm;
+  }
+
+  .btn-emerald {
+    @apply btn-base bg-[#059669] text-white hover:bg-[#047857] shadow-xl shadow-emerald-900/10;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Typography Utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.tracking-ultra {
+  letter-spacing: 0.35em;
+}
+
+.leaflet-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto !important;
+  overscroll-behavior-y: contain;
+}
+
+@media (min-width: 768px) {
+  .leaflet-container {
+    height: 100% !important;
+  }
+}
+
+/* Custom Bento-Card Leaflet Popup Styles */
+@keyframes bentoPopupEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.custom-leaflet-popup {
+  animation: bentoPopupEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  transform-origin: bottom center !important;
+}
+
+.custom-leaflet-popup .leaflet-popup-content-wrapper {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+  border: 1px solid rgba(11, 20, 36, 0.08) !important;
+  border-radius: 1.5rem !important;
+  box-shadow: 0 10px 25px -5px rgba(11, 20, 36, 0.1), 0 8px 10px -6px rgba(11, 20, 36, 0.05) !important;
+  padding: 4px !important;
+  transition: all 0.3s ease;
+}
+
+.custom-leaflet-popup .leaflet-popup-tip-container {
+  margin-top: -1px !important;
+}
+
+.custom-leaflet-popup .leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+  box-shadow: 0 5px 10px -3px rgba(11, 20, 36, 0.05) !important;
+  border-left: 1px solid rgba(11, 20, 36, 0.04) !important;
+  border-bottom: 1px solid rgba(11, 20, 36, 0.04) !important;
+}
+
+.custom-leaflet-popup .leaflet-popup-content {
+  margin: 10px 14px !important;
+  font-family: inherit !important;
+  line-height: 1.4 !important;
+}
+
+/* Custom premium tactile marker animations */
+.custom-marker-inner {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease !important;
+}
+.custom-marker-inner:hover {
+  transform: rotate(-45deg) scale(1.18) !important;
+  box-shadow: 0 16px 32px -4px rgba(0,0,0,0.22), 0 8px 16px -4px rgba(0,0,0,0.15) !important;
+  z-index: 1000 !important;
+}
+
+
+

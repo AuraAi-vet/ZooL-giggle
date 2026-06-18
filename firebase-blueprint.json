@@ -1,0 +1,379 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Information about the user (owner or vet)",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "User's full name" },
+        "email": { "type": "string", "format": "email", "description": "User's email address" },
+        "image": { "type": "string", "description": "Profile image URL" },
+        "phone": { "type": "string", "description": "Contact phone number" },
+        "role": { "type": "string", "enum": ["owner", "vet", "provider"], "description": "User's role in the app" },
+        "onboardingComplete": { "type": "boolean", "description": "Whether the user has completed onboarding" }
+      },
+      "required": ["name", "email", "role"]
+    },
+    "Pet": {
+      "title": "Pet",
+      "description": "Information about a pet",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["dog", "cat", "bird", "other"] },
+        "breed": { "type": "string" },
+        "age": { "type": "number" },
+        "weight": { "type": "number" },
+        "image": { "type": "string" },
+        "birthday": { "type": "string", "format": "date" },
+        "anniversary": { "type": "string", "format": "date" },
+        "weightHistory": { 
+          "type": "array", 
+          "items": { 
+            "type": "object",
+            "properties": {
+              "date": { "type": "string" },
+              "value": { "type": "number" }
+            }
+          }
+        },
+        "eSamrudhaId": { "type": "string" },
+        "insuranceNumber": { "type": "string" },
+        "isMicrochipped": { "type": "boolean" },
+        "microchipId": { "type": "string" },
+        "bloodGroup": { "type": "string" },
+        "allergies": { "type": "array", "items": { "type": "string" } },
+        "chronicConditions": { "type": "array", "items": { "type": "string" } },
+        "surgicalHistory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "date": { "type": "string" },
+              "procedure": { "type": "string" },
+              "surgeon": { "type": "string" },
+              "notes": { "type": "string" }
+            }
+          }
+        },
+        "neutered": { "type": "boolean" },
+        "mood": { "type": "string", "enum": ["happy", "playful", "sleepy", "calm", "anxious", "tired"] },
+        "healthScore": { "type": "number" },
+        "ownerId": { "type": "string", "description": "UID of the owner" }
+      },
+      "required": ["name", "type", "ownerId"]
+    },
+    "HealthRecord": {
+      "title": "Health Record",
+      "description": "Medical record for a pet",
+      "type": "object",
+      "properties": {
+        "petId": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "type": { "type": "string", "enum": ["vaccination", "checkup", "medication", "other"] },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "clinicalNotes": { "type": "string" },
+        "attachments": { "type": "array", "items": { "type": "string" } },
+        "nextDueDate": { "type": "string", "format": "date-time" },
+        "reminderEnabled": { "type": "boolean" },
+        "prescription": { "type": "string", "description": "Prescribed medication details" },
+        "verifiedByGov": { "type": "boolean" },
+        "govVerifyId": { "type": "string" }
+      },
+      "required": ["petId", "ownerId", "date", "type", "title"]
+    },
+    "CommunityPost": {
+      "title": "Community Post",
+      "description": "A post in the community forum",
+      "type": "object",
+      "properties": {
+        "authorId": { "type": "string" },
+        "author": { "type": "string" },
+        "authorImage": { "type": "string" },
+        "content": { "type": "string" },
+        "likes": { "type": "number" },
+        "comments": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "isVet": { "type": "boolean" },
+        "isUrgent": { "type": "boolean" },
+        "location": { "type": "string" }
+      },
+      "required": ["authorId", "content", "timestamp"]
+    },
+    "QuickLog": {
+      "title": "Quick Log",
+      "description": "Daily activity log for a pet",
+      "type": "object",
+      "properties": {
+        "petId": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "type": { "type": "string", "enum": ["food", "water", "pee", "poop", "walk", "play"] },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" }
+      },
+      "required": ["petId", "ownerId", "type", "timestamp"]
+    },
+    "PetDocument": {
+      "title": "Pet Document",
+      "description": "Uploaded document for a pet",
+      "type": "object",
+      "properties": {
+        "petId": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "title": { "type": "string" },
+        "type": { "type": "string", "enum": ["report", "prescription", "certificate"] },
+        "date": { "type": "string", "format": "date-time" },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["petId", "ownerId", "title", "type", "date"]
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "Scheduled vet appointment",
+      "type": "object",
+      "properties": {
+        "petId": { "type": "string" },
+        "petName": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "vetId": { "type": "string" },
+        "vetName": { "type": "string" },
+        "serviceName": { "type": "string" },
+        "type": { "type": "string", "enum": ["visit", "telehealth", "grooming", "other"] },
+        "date": { "type": "string", "format": "date" },
+        "time": { "type": "string" },
+        "status": { "type": "string", "enum": ["scheduled", "completed", "cancelled", "confirmed", "pending"] },
+        "reason": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "ownerPhone": { "type": "string" }
+      },
+      "required": ["petId", "ownerId", "date", "status"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "In-app notification",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "type": { "type": "string", "enum": ["health", "appointment", "system"] },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "read": { "type": "boolean" },
+        "link": { "type": "string" }
+      },
+      "required": ["userId", "title", "message", "type", "timestamp", "read"]
+    },
+    "Feedback": {
+      "title": "Feedback",
+      "description": "User feedback and issue reports",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "type": { "type": "string", "enum": ["issue", "feature"] },
+        "message": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["type", "message", "timestamp"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Direct messages between vets and owners",
+      "type": "object",
+      "properties": {
+        "senderId": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["senderId", "receiverId", "content", "timestamp", "read"]
+    },
+    "PetLicense": {
+      "title": "Pet License",
+      "description": "Official government pet licensing and registration",
+      "type": "object",
+      "properties": {
+        "petId": { "type": "string" },
+        "licenseNumber": { "type": "string" },
+        "issuer": { "type": "string" },
+        "issueDate": { "type": "string" },
+        "expiryDate": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "expired", "pending"] },
+        "type": { "type": "string", "enum": ["standard", "breeder", "service"] }
+      },
+      "required": ["petId", "licenseNumber", "issuer", "status", "type"]
+    },
+    "PublicAlert": {
+      "title": "Public Alert",
+      "description": "Public health notifications and animal welfare alerts",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "region": { "type": "string" },
+        "issuedBy": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["title", "message", "severity", "timestamp"]
+    },
+    "TrainingProgress": {
+      "title": "Training Progress",
+      "description": "User progress in training modules",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "moduleId": { "type": "number" },
+        "completedSteps": { "type": "number" },
+        "isCompleted": { "type": "boolean" }
+      },
+      "required": ["userId", "moduleId", "completedSteps", "isCompleted"]
+    },
+    "ActivityLog": {
+      "title": "Activity Log",
+      "description": "Log of pet activities",
+      "type": "object",
+      "properties": {
+        "petId": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "name": { "type": "string" },
+        "time": { "type": "string" },
+        "location": { "type": "string" },
+        "type": { "type": "string", "enum": ["walk", "play", "vet", "other"] },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["petId", "ownerId", "name", "time", "location", "type", "timestamp"]
+    },
+    "BlockedSlot": {
+      "title": "Blocked Slot",
+      "description": "A time slot blocked by a vet for personal reasons",
+      "type": "object",
+      "properties": {
+        "vetId": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "time": { "type": "string" },
+        "reason": { "type": "string" }
+      },
+      "required": ["vetId", "date", "time"]
+    },
+    "AIInteractionLog": {
+      "title": "AI Interaction Log",
+      "description": "Log of AI usage and token consumption",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "feature": { "type": "string" },
+        "tokensEstimated": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "success": { "type": "boolean" },
+        "model": { "type": "string" }
+      },
+      "required": ["feature", "tokensEstimated", "timestamp", "success", "model"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "Service offered by a provider",
+      "type": "object",
+      "properties": {
+        "providerId": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "duration": { "type": "number" },
+        "price": { "type": "number" },
+        "description": { "type": "string" }
+      },
+      "required": ["providerId", "name", "type", "duration", "price"]
+    },
+    "InventoryItem": {
+      "title": "Inventory Item",
+      "description": "Inventory item offered by a provider",
+      "type": "object",
+      "properties": {
+        "providerId": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "quantity": { "type": "number" },
+        "price": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["providerId", "name", "category", "quantity", "price", "status"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profiles"
+    },
+    "pets/{petId}": {
+      "schema": "Pet",
+      "description": "Pet profiles"
+    },
+    "healthRecords/{recordId}": {
+      "schema": "HealthRecord",
+      "description": "Pet health records"
+    },
+    "communityPosts/{postId}": {
+      "schema": "CommunityPost",
+      "description": "Community forum posts"
+    },
+    "quickLogs/{logId}": {
+      "schema": "QuickLog",
+      "description": "Pet daily activity logs"
+    },
+    "petDocuments/{docId}": {
+      "schema": "PetDocument",
+      "description": "Pet documents and reports"
+    },
+    "appointments/{appointmentId}": {
+      "schema": "Appointment",
+      "description": "Vet appointments"
+    },
+    "notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "User notifications"
+    },
+    "feedback/{feedbackId}": {
+      "schema": "Feedback",
+      "description": "User feedback"
+    },
+    "messages/{messageId}": {
+      "schema": "Message",
+      "description": "Direct messages"
+    },
+    "licenses/{licenseId}": {
+      "schema": "PetLicense",
+      "description": "Pet licenses and registrations"
+    },
+    "publicAlerts/{alertId}": {
+      "schema": "PublicAlert",
+      "description": "Public health and welfare alerts"
+    },
+    "trainingProgress/{progressId}": {
+      "schema": "TrainingProgress",
+      "description": "User training progress"
+    },
+    "activityLogs/{logId}": {
+      "schema": "ActivityLog",
+      "description": "Pet activity logs"
+    },
+    "blockedSlots/{slotId}": {
+      "schema": "BlockedSlot",
+      "description": "Vet blocked availability slots"
+    },
+    "aiInteractionLogs/{logId}": {
+      "schema": "AIInteractionLog",
+      "description": "AI usage logs"
+    },
+    "services/{serviceId}": {
+      "schema": "Service",
+      "description": "Services offered by providers"
+    },
+    "inventoryItems/{itemId}": {
+      "schema": "InventoryItem",
+      "description": "Inventory items offered by providers"
+    }
+  }
+}
