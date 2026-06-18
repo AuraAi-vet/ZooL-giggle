@@ -35,11 +35,18 @@ export default defineConfig({
       }
     })
   ],
- build: {
+export default defineConfig({
+  build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'], // Or whatever dependencies you are splitting
+        manualChunks(id) {
+          // Check if the module is in node_modules
+          if (id.includes('node_modules')) {
+            // You can split specific packages or just return a general 'vendor' chunk
+            if (id.includes('react')) {
+              return 'vendor';
+            }
+          }
         }
       }
     }
