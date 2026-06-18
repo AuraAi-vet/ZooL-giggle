@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Be Vietnam Pro", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Be Vietnam Pro", "Space Grotesk", sans-serif;
+
+  /* ZooL Brand Kit - Premium MedTech Feel */
+  --zool-cobalt: 37, 99, 235;    /* #2563EB - Deeper Blue */
+  --zool-emerald: 16, 185, 129;  /* #10B981 - Vibrant Emerald */
+  --zool-charcoal: 15, 23, 42;   /* #0F172A - Deeper Slate */
+  --bg-surface: 250, 248, 245;   /* #FAF8F5 */
+  
+  /* AI Glow Effects */
+  --ai-glow: 14, 165, 233;       /* Sky 500 */
+}
+
