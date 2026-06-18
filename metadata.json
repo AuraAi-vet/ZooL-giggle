@@ -1,0 +1,12 @@
+{
+  "name": "ZooL - Premium Pet Care",
+  "description": "An elite, full-stack pet care app featuring clinical-zen aesthetics, live-synced telemetry, and trial booking options.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

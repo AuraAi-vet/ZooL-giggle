@@ -1,0 +1,18 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile in the system",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "UserProfile",
+      "description": "User profiles collection"
+    }
+  }
+}
