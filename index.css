@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: "Quicksand", "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    --font-brand: "Fredoka", sans-serif;
+    --font-display: "Outfit", sans-serif;
+
+    /* Soft Sophisticated Palette */
+    --color-bg-main: #FDFBF7;
+    --color-glass: rgba(255, 255, 255, 0.7);
+    --color-border: rgba(15, 23, 42, 0.06);
+    
+    --color-accent-soft-blue: #BAE6FD;
+    --color-accent-soft-pink: #FBCFE8;
+    --color-accent-soft-purple: #E9D5FF;
+    
+    --color-text-primary: #0B1424;
+    --color-text-secondary: #64748B;
+    --color-text-muted: #94A3B8;
+  }
+  
+  body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-slate-900;
+  }
+}
+
+@layer components {
+  /* Bento Card Pattern */
+  .bento-card {
+    @apply bg-white rounded-[2.5rem] border border-slate-200/60 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/40 hover:-translate-y-1;
+  }
+
+  /* Refined Button System */
+  .btn-base {
+    @apply flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition-all duration-300 active:scale-95;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-slate-900 text-white hover:bg-slate-800 shadow-lg shadow-slate-900/10;
+  }
+
+  .btn-soft {
+    @apply btn-base bg-white border border-slate-200 text-slate-700 hover:border-slate-900 hover:text-slate-900 shadow-sm;
+  }
+
+  .btn-accent {
+    @apply btn-base bg-sky-100 text-sky-700 hover:bg-sky-200;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Typography Utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.tracking-ultra {
+  letter-spacing: 0.35em;
+}
+

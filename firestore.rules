@@ -1,0 +1,168 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() { return request.auth != null; }
+    function isVerified() { return true; }
+    function incoming() { return request.resource.data; }
+    function existing() { return resource.data; }
+    function isAdmin() { return isSignedIn() && request.auth.token.email == 'auraaivet@gmail.com'; }
+    function isVet() { return isSignedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'vet'; }
+    function isProvider() { return isSignedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'provider'; }
+    function isVetOrProvider() { return isSignedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['vet', 'provider']; }
+
+    match /users/{userId} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isAdmin() || resource.data.role == 'vet');
+      allow create: if isSignedIn() && request.auth.uid == userId && incoming().role in ['owner', 'vet', 'provider'] && incoming().isPremium == false && incoming().verified == false;
+      allow update: if isSignedIn() && (
+        isAdmin() || 
+        (request.auth.uid == userId && 
+         incoming().role == existing().role && 
+         incoming().isPremium == existing().isPremium && 
+         incoming().verified == existing().verified)
+      );
+      allow delete: if isAdmin();
+    }
+
+    match /pets/{petId} {
+      allow read: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin() || isVetOrProvider());
+      allow create: if isSignedIn() && incoming().ownerId == request.auth.uid;
+      allow update: if isSignedIn() && (
+        isAdmin() || 
+        (existing().ownerId == request.auth.uid && incoming().ownerId == request.auth.uid)
+      );
+      allow delete: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin());
+    }
+
+    match /notifications/{notificationId} {
+      allow read: if isSignedIn() && (existing().userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && incoming().userId == request.auth.uid;
+      allow update: if isSignedIn() && (
+        isAdmin() || 
+        (existing().userId == request.auth.uid && incoming().userId == request.auth.uid)
+      );
+      allow delete: if isSignedIn() && (existing().userId == request.auth.uid || isAdmin());
+    }
+
+    match /healthRecords/{id} {
+      allow read: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin() || isVetOrProvider());
+      allow create: if isSignedIn() && (incoming().ownerId == request.auth.uid || isVet());
+      allow update: if isSignedIn() && (
+        isAdmin() || 
+        isVet() || 
+        (existing().ownerId == request.auth.uid && incoming().ownerId == request.auth.uid)
+      );
+      allow delete: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin());
+    }
+
+    match /quickLogs/{id} {
+      allow read: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin() || isVetOrProvider());
+      allow create: if isSignedIn() && incoming().ownerId == request.auth.uid;
+      allow update: if isSignedIn() && (
+        isAdmin() || 
+        (existing().ownerId == request.auth.uid && incoming().ownerId == request.auth.uid)
+      );
+      allow delete: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin());
+    }
+
+    match /petDocuments/{id} {
+      allow read: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin() || isVetOrProvider());
+      allow create: if isSignedIn() && (incoming().ownerId == request.auth.uid || isVet());
+      allow update: if isSignedIn() && (
+        isAdmin() || 
+        isVet() || 
+        (existing().ownerId == request.auth.uid && incoming().ownerId == request.auth.uid)
+      );
+      allow delete: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin());
+    }
+
+    match /appointments/{id} { 
+      allow read: if isSignedIn() && (existing().ownerId == request.auth.uid || existing().vetId == request.auth.uid || isAdmin() || isVetOrProvider());
+      allow create: if isSignedIn() && (incoming().ownerId == request.auth.uid || isVet());
+      allow update: if isSignedIn() && (
+        isAdmin() || 
+        existing().vetId == request.auth.uid || 
+        (existing().ownerId == request.auth.uid && incoming().status in ['scheduled', 'cancelled', 'pending'])
+      );
+      allow delete: if isAdmin();
+    }
+
+    match /communityPosts/{id} { 
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && incoming().authorId == request.auth.uid && (incoming().isVet == false || isVet());
+      allow update: if isSignedIn() && (
+        isAdmin() || 
+        (existing().authorId == request.auth.uid && incoming().authorId == request.auth.uid) ||
+        (incoming().likes == existing().likes + 1 || incoming().likes == existing().likes - 1)
+      );
+      allow delete: if isSignedIn() && (existing().authorId == request.auth.uid || isAdmin());
+    }
+
+    match /messages/{id} { 
+      allow read: if isSignedIn() && (existing().senderId == request.auth.uid || existing().receiverId == request.auth.uid || isAdmin()); 
+      allow create: if isSignedIn() && (incoming().senderId == request.auth.uid); 
+      allow update, delete: if isAdmin();
+    }
+
+    match /licenses/{id} { 
+      allow read: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin() || isVetOrProvider());
+      allow create: if isSignedIn() && (incoming().ownerId == request.auth.uid || isAdmin());
+      allow update: if isSignedIn() && (
+        isAdmin() || 
+        (existing().ownerId == request.auth.uid && incoming().ownerId == request.auth.uid)
+      );
+      allow delete: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin());
+    }
+
+    match /trainingProgress/{id} { 
+      allow read: if isSignedIn() && (existing().userId == request.auth.uid || isAdmin()); 
+      allow create: if isSignedIn() && (incoming().userId == request.auth.uid);
+      allow update: if isSignedIn() && (existing().userId == request.auth.uid || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    match /activityLogs/{id} { 
+      allow read: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin() || isVetOrProvider());
+      allow create: if isSignedIn() && (incoming().ownerId == request.auth.uid);
+      allow update: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin());
+      allow delete: if isSignedIn() && (existing().ownerId == request.auth.uid || isAdmin());
+    }
+
+    match /blockedSlots/{id} { 
+      allow read: if isSignedIn(); 
+      allow create: if isSignedIn() && (incoming().vetId == request.auth.uid || isAdmin());
+      allow update: if isSignedIn() && (existing().vetId == request.auth.uid || isAdmin());
+      allow delete: if isSignedIn() && (existing().vetId == request.auth.uid || isAdmin());
+    }
+
+    match /userTasks/{id} { 
+      allow read: if isSignedIn() && (existing().userId == request.auth.uid || isAdmin()); 
+      allow create: if isSignedIn() && (incoming().userId == request.auth.uid);
+      allow update: if isSignedIn() && (existing().userId == request.auth.uid || isAdmin());
+      allow delete: if isSignedIn() && (existing().userId == request.auth.uid || isAdmin());
+    }
+
+    match /services/{id} { 
+      allow read: if isSignedIn(); 
+      allow create, update, delete: if isAdmin() || isProvider();
+    }
+
+    match /inventoryItems/{id} { 
+      allow read: if isSignedIn(); 
+      allow create, update, delete: if isAdmin() || isProvider();
+    }
+
+    match /aiInteractionLogs/{id} { 
+      allow create: if isSignedIn(); 
+      allow read, update, delete: if isAdmin();
+    }
+    
+    match /feedback/{feedbackId} {
+      allow create: if isSignedIn() && incoming().userId == request.auth.uid;
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}

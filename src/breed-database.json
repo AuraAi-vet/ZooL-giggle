@@ -1,0 +1,287 @@
+{
+  "dog": {
+    "default": {
+      "summary": "Mixed breed dogs are generally robust and resilient pets with a highly diverse genetic background, reducing the likelihood of inheriting recessive breed-specific genetic disorders.",
+      "commonIssues": [
+        "Hip dysplasia (especially in larger dogs)",
+        "Dental disease",
+        "Obesity-related strain"
+      ],
+      "careTips": [
+        "Schedule annual veterinary check-ups.",
+        "Provide dental hygiene care 2-3 times per week.",
+        "Maintain current vaccinations and parasite preventatives."
+      ],
+      "dietaryNeeds": [
+        "Balanced, life-stage appropriate diet (puppy, adult, senior).",
+        "Incorporate Omega-3 fatty acids for joint and coat health."
+      ],
+      "exerciseLevel": "Moderate, requiring 45-60 minutes of daily physical activity and positive mental stimulation.",
+      "longevity": "10-15 years"
+    },
+    "labrador retriever": {
+      "summary": "Labradors are highly energetic, friendly, and intelligent family companions who excel in retrieving and tracking. They are highly food-motivated, which requires careful caloric monitoring.",
+      "commonIssues": [
+        "Hip and elbow dysplasia",
+        "Progressive Retinal Atrophy (PRA)",
+        "Exercise-Induced Collapse (EIC)",
+        "Gastric Dilatation-Volvulus (Bloat)"
+      ],
+      "careTips": [
+        "Engage in joint-friendly exercises like swimming.",
+        "Screen regularly for ocular conditions.",
+        "Use slow feeder bowls to mitigate bloat risks."
+      ],
+      "dietaryNeeds": [
+        "Strictly controlled calorie intake to prevent obesity.",
+        "Glucosamine and chondroitin for advanced joint maintenance."
+      ],
+      "exerciseLevel": "High intensity, requiring 60-90 minutes of vigorous daily exercise, training, and water games.",
+      "longevity": "10-12 years"
+    },
+    "german shepherd": {
+      "summary": "German Shepherds are legendary working dogs with unmatched courage, loyalty, and trainability. They possess a thick double coat and require active structural management.",
+      "commonIssues": [
+        "Hip and elbow dysplasia",
+        "Degenerative Myelopathy (DM)",
+        "Exocrine Pancreatic Insufficiency (EPI)",
+        "Perianal fistulas"
+      ],
+      "careTips": [
+        "Regular mental stimulation is critical to prevent destructive behaviors.",
+        "Frequent brushing of their dense double coat to handle shedding.",
+        "Monitor gaits annually for early symptoms of Degenerative Myelopathy."
+      ],
+      "dietaryNeeds": [
+        "Highly digestible proteins to alleviate sensitive gastrointestinal tracts.",
+        "Probiotics and prebiotics to support optimal digestive enzyme function."
+      ],
+      "exerciseLevel": "Very high, demanding upwards of 90 minutes of daily structured workouts and agility tasks.",
+      "longevity": "9-13 years"
+    },
+    "golden retriever": {
+      "summary": "Golden Retrievers are energetic, trusting, and gentle companions with a beautiful water-repellent dense coat. They thrive on human companionship and positive reinforcement.",
+      "commonIssues": [
+        "Hemangiosarcoma and Lymphoma",
+        "Hip and elbow dysplasia",
+        "Subvalvular Aortic Stenosis (Heart murmur)",
+        "Atopic dermatitis"
+      ],
+      "careTips": [
+        "Regular veterinary cancer screenings absolute recommendation post-age 6.",
+        "Frequent ear cleanings due to moisture trap from floppy ears.",
+        "Ensure thorough drying after baths or swimming to avoid hot spots."
+      ],
+      "dietaryNeeds": [
+        "Controlled omega fatty acid ratios for skin barrier support.",
+        "L-carnitine and taurine integrations for cardiac health maintenance."
+      ],
+      "exerciseLevel": "High, including 60 minutes of daily fetching, trailing, or swimming.",
+      "longevity": "10-12 years"
+    },
+    "french bulldog": {
+      "summary": "French Bulldogs are affectionate, low-energy companions with a distinct brachycephalic facial structure that dictates specialized breathing and heat care.",
+      "commonIssues": [
+        "Brachycephalic Obstructive Airway Syndrome (BOAS)",
+        "Intervertebral Disc Disease (IVDD)",
+        "Allergies and skin fold dermatitis",
+        "Patellar luxation"
+      ],
+      "careTips": [
+        "Strictly avoid heat, hot environments, and over-exertion.",
+        "Clean and dry facial folds regularly with antimicrobial wipes.",
+        "Use a harness instead of a collar to protect fragile airways."
+      ],
+      "dietaryNeeds": [
+        "Hypoallergenic ingredients to limit severe dermatological triggers.",
+        "Calorie-dense small kibble to regulate swallowing and avoid weight gain."
+      ],
+      "exerciseLevel": "Light, consisting of 20-30 minutes of leisurely walking, strictly during cooler times of the day.",
+      "longevity": "10-12 years"
+    },
+    "poodle": {
+      "summary": "Poodles are exceptionally intelligent, highly active, and carry a iconic hypoallergenic low-shedding curly coat requiring professional grooming.",
+      "commonIssues": [
+        "Sebaceous adenitis (skin disease)",
+        "Addison's Disease (adrenal issue)",
+        "Tracheal collapse (in Toy/Miniature types)",
+        "Gastric torsion (Bloat in Standard)"
+      ],
+      "careTips": [
+        "Professional coat grooming and clipping every 4-6 weeks.",
+        "Ear canal checking and plucking to prevent chronic yeast infections.",
+        "Highly complex command-work to occupy supreme problem-solving brains."
+      ],
+      "dietaryNeeds": [
+        "High-quality animal fats for energy and hypoallergenic skin elasticity.",
+        "Balanced calcium-to-phosphorus ratios to keep fine skeleton lines rigid."
+      ],
+      "exerciseLevel": "Moderate to high, needing 60 minutes of retrievals, intelligence puzzles, and outdoor walks.",
+      "longevity": "12-15 years"
+    },
+    "beagle": {
+      "summary": "Beagles are cheerful, merry scent hounds guided entirely by their sense of smell, possessing an inherent drive to track scents.",
+      "commonIssues": [
+        "Cherry eye (Protruding prolapsed gland)",
+        "Epilepsy (unprovoked seizures)",
+        "Hypothyroidism",
+        "Obesity"
+      ],
+      "careTips": [
+        "Secure yards completely, as their instinct is to follow tracks at all costs.",
+        "Keep foods out of reach to avoid garbage ingestion behaviors.",
+        "Check long floppy ears for moisture buildup weekly."
+      ],
+      "dietaryNeeds": [
+        "Highly portion-controlled kibble; Beagles can eat continuously if permitted.",
+        "High-fiber dietary fillers to help satisfy huge appetites safely."
+      ],
+      "exerciseLevel": "Moderate, requiring 45-60 minutes of nosework, sniffing walks, and exploration.",
+      "longevity": "12-15 years"
+    },
+    "corgi": {
+      "summary": "Pembroke Welsh Corgis are alert, highly energetic herding dogs possessing long backs and short, robust legs, requiring careful skeletal load management.",
+      "commonIssues": [
+        "Degenerative Myelopathy (DM)",
+        "Intervertebral Disc Disease (IVDD)",
+        "Progressive Retinal Atrophy",
+        "Hip dysplasia"
+      ],
+      "careTips": [
+        "Strictly minimize jumping off furniture, beds, or high stairs.",
+        "Combat double-coat shedding with twice-weekly slicker brush sessions.",
+        "Engage in brain/tactical herding games to burn off work ethic."
+      ],
+      "dietaryNeeds": [
+        "Exceptional weight control; even minor excess weight strains long spinal segments.",
+        "High protein, moderate fat to maintain muscular, compact mass."
+      ],
+      "exerciseLevel": "Moderate to high, needing 60 minutes of walks, fetch games, and structure obedience.",
+      "longevity": "12-15 years"
+    }
+  },
+  "cat": {
+    "default": {
+      "summary": "Domestic mixed breeds are generally highly self-sufficient, structurally robust, and possess excellent genetic diversity, reducing breed-specific risks.",
+      "commonIssues": [
+        "Feline Lower Urinary Tract Disease (FLUTD)",
+        "Chronic Kidney Disease (especially in seniors)",
+        "Hypertrophic Cardiomyopathy (HCM)",
+        "Dental tartar buildup"
+      ],
+      "careTips": [
+        "Provide multiple clean water sources to maximize hydration.",
+        "Keep fresh scratching surfaces to facilitate skin shedding of claws.",
+        "Implement environmental enrichment like vertical cat trees."
+      ],
+      "dietaryNeeds": [
+        "Incorporate wet food to promote high moisture absorption.",
+        "Premium protein diets centered around real meat instead of fillers."
+      ],
+      "exerciseLevel": "Moderate, involving simulated hunting games with laser pointers or wand toys for 15-20 minutes daily.",
+      "longevity": "12-18 years"
+    },
+    "persian": {
+      "summary": "Persians are dignified, quiet, and docile cats characterized by their magnificent long matching coats and unique flat face, requiring extensive manual care.",
+      "commonIssues": [
+        "Polycystic Kidney Disease (PKD)",
+        "Hypertrophic Cardiomyopathy (HCM)",
+        "Brachycephalic respiratory struggles",
+        "Epiphora (Excessive eye tearing)"
+      ],
+      "careTips": [
+        "Daily coat grooming is mandatory to prevent painful mats.",
+        "Wipe tear stains from eyes gently with safe damp cloth daily.",
+        "Perform routine veterinary renal ultrasound checks for PKD."
+      ],
+      "dietaryNeeds": [
+        "Specially shaped kibble to accommodate flat jaws.",
+        "Highly digestible formulas to limit hairball formations."
+      ],
+      "exerciseLevel": "Low, preferring short, calm play sessions punctuated by long, serene resting periods.",
+      "longevity": "12-17 years"
+    },
+    "maine coon": {
+      "summary": "Maine Coons are the gentle giants of the feline world, loving, massive, and carrying a magnificent water-resistant shaggy coat optimized for cold climates.",
+      "commonIssues": [
+        "Hypertrophic Cardiomyopathy (HCM)",
+        "Hip Dysplasia (rare in most smaller felines)",
+        "Spinal Muscular Atrophy (SMA)",
+        "Stomatitis"
+      ],
+      "careTips": [
+        "Genetic screening for HCM gene mutations is highly recommended.",
+        "Brush long undercoats twice weekly to minimize matting.",
+        "Ensure sturdy, extra-large scratchers and climbing structures."
+      ],
+      "dietaryNeeds": [
+        "Enriched with taurine for strong heart muscle health.",
+        "Balanced joint protection nutrients to support their heavy bone structure."
+      ],
+      "exerciseLevel": "Moderate to active, enjoying interactive puzzle toys, larger climbs, and sometimes fetch.",
+      "longevity": "12-15 years"
+    },
+    "siamese": {
+      "summary": "Siamese are highly vocal, incredibly social, and extremely intelligent companions who demand near-constant human interaction and mental engagement.",
+      "commonIssues": [
+        "Amyloidosis (liver disease)",
+        "Gastrointestinal vulnerabilities",
+        "Asthma and bronchial conditions",
+        "Ocular convergent strabismus (crossed eyes)"
+      ],
+      "careTips": [
+        "Provide intricate puzzle toys to feed their highly intelligent minds.",
+        "Keep environment calm; Siamese are prone to anxiety-related self-grooming.",
+        "Provide routine weight tracking to prevent stress on fine bone structures."
+      ],
+      "dietaryNeeds": [
+        "Extremely lean proteins to maintain their signature streamlined musculature.",
+        "Add antioxidant complexes to guard delicate respiratory structures."
+      ],
+      "exerciseLevel": "High, demanding active engagement, interactive toys, climbing towers, and puzzle hunt systems.",
+      "longevity": "15-20 years"
+    }
+  },
+  "other": {
+    "default": {
+      "summary": "Pocket pets, birds, fish, and exotic animals carry unique species-specific metabolic and environmental needs critical for overall wellness.",
+      "commonIssues": [
+        "Metabolic Bone Disease (in reptiles)",
+        "Respiratory infections from poor airflow",
+        "Overgrown incisors or beaks",
+        "Parasite infestations"
+      ],
+      "careTips": [
+        "Prioritize exact enclosure humidity, temperature, and lighting ranges.",
+        "Perform weight checks once per month to monitor nutritional intake.",
+        "Provide species-appropriate substrates and chewables."
+      ],
+      "dietaryNeeds": [
+        "Highly specialized diets matching natural organic foraging patterns.",
+        "Vitamin and mineral dusting for reptiles or specialized seed/pellet feeds."
+      ],
+      "exerciseLevel": "Varies by species, requiring safe physical and sensory enrichment.",
+      "longevity": "Varies (2 to 50+ years)"
+    },
+    "rabbit": {
+      "summary": "Rabbits are gentle herbivorous companion animals with fragile skeletons and complex, sensitive digestive tracts requiring continuous fiber.",
+      "commonIssues": [
+        "Gastrointestinal Stasis (GI Stasis)",
+        "Dental malocclusion (overgrown teeth)",
+        "Ear mites and skin mites",
+        "Uterine cancer in unspayed females"
+      ],
+      "careTips": [
+        "Unlimited high-quality fresh grass hay must be available daily.",
+        "Ensure a completely bunny-proofed safe area to run and explore.",
+        "Provide wooden chew toys continuously to wear down growing teeth."
+      ],
+      "dietaryNeeds": [
+        "80-90% fresh grass hay (like Timothy), supplemented by leafy green vegetables and small portions of pellets.",
+        "Strictly avoid sugary fruits, seeds, and commercial yogurt drops."
+      ],
+      "exerciseLevel": "Moderate to high, requiring 3-4 hours of daily free-roaming exercise in a fully secure area.",
+      "longevity": "8-12 years"
+    }
+  }
+}
