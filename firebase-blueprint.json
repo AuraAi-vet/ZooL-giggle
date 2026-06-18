@@ -1,0 +1,106 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile in the system",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string" }
+      }
+    },
+    "PetProfile": {
+      "title": "PetProfile",
+      "description": "A pet belonging to an owner",
+      "type": "object",
+      "properties": {
+        "petId": { "type": "string" },
+        "ownerUid": { "type": "string" },
+        "name": { "type": "string" },
+        "breed": { "type": "string" },
+        "age": { "type": "number" }
+      }
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "An appointment for a pet at a clinic or provider",
+      "type": "object",
+      "properties": {
+        "petId": { "type": "string" },
+        "ownerUid": { "type": "string" },
+        "clinicId": { "type": "string" },
+        "status": { "type": "string" },
+        "scheduledTime": { "type": "number" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "serviceSummary": { "type": "string" },
+        "completedAt": { "type": "number" }
+      }
+    },
+    "ServiceUpdate": {
+      "title": "ServiceUpdate",
+      "description": "Updates from service providers to owners",
+      "type": "object",
+      "properties": {
+        "petId": { "type": "string" },
+        "ownerUid": { "type": "string" },
+        "providerName": { "type": "string" },
+        "message": { "type": "string" },
+        "timestamp": { "type": "number" },
+        "read": { "type": "boolean" }
+      }
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "System or user notifications",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "read": { "type": "boolean" },
+        "timestamp": { "type": "number" },
+        "link": { "type": "string" }
+      }
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "User activity logs",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "action": { "type": "string" },
+        "details": { "type": "string" },
+        "timestamp": { "type": "number" }
+      }
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "UserProfile",
+      "description": "User profiles collection"
+    },
+    "pets": {
+      "schema": "PetProfile",
+      "description": "Pets collection"
+    },
+    "appointments": {
+      "schema": "Appointment",
+      "description": "Appointments collection"
+    },
+    "serviceUpdates": {
+      "schema": "ServiceUpdate",
+      "description": "Service updates collection"
+    },
+    "notifications": {
+      "schema": "Notification",
+      "description": "Notifications collection"
+    },
+    "activityLogs": {
+      "schema": "ActivityLog",
+      "description": "Activity logs collection"
+    }
+  }
+}
