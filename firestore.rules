@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    match /users/{userId} {
+      allow read: if isSignedIn();
+      allow write: if isOwner(userId);
+    }
+
+    match /pets/{petId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn() && (
+        (request.method == 'create' && incoming().ownerId == request.auth.uid) ||
+        (request.method == 'update' && existing().ownerId == request.auth.uid && incoming().ownerId == request.auth.uid) ||
+        (request.method == 'delete' && existing().ownerId == request.auth.uid)
+      );
+    }
+
+    match /appointments/{appointmentId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+
+    match /serviceUpdates/{updateId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn() && (
+        (request.method == 'create' && incoming().providerUid == request.auth.uid) ||
+        (request.method == 'update' && existing().providerUid == request.auth.uid) ||
+        (request.method == 'delete' && existing().providerUid == request.auth.uid)
+      );
+    }
+
+    match /notifications/{notificationId} {
+      allow read: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow write: if isSignedIn();
+    }
+
+    match /activityLogs/{logId} {
+      allow read: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow write: if isSignedIn();
+    }
+  }
+}

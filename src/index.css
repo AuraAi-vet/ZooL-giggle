@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+
+  /* ZooL Brand Kit */
+  --zool-cobalt: 59, 130, 246;    /* #3B82F6 */
+  --zool-charcoal: 30, 41, 59;   /* #1E293B */
+  --bg-surface: 249, 250, 251;   /* #F9FAFB */
+}
+

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "gen-lang-client-0395374194"
+  },
+  "targets": {
+    "gen-lang-client-0395374194": {
+      "firestore": {
+        "main": [
+          "ai-studio-59f0e8c9-f8aa-4dac-b738-50fe963213c4"
+        ]
+      }
+    }
+  }
+}
