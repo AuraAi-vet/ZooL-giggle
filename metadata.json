@@ -1,0 +1,12 @@
+{
+  "name": "ZooL - Premium Veterinary AI Platform",
+  "description": "An elite, full-stack AI-powered veterinary platform featuring clinical-zen aesthetics, live-synced telemetry, AI diagnostics, and premium UI.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
